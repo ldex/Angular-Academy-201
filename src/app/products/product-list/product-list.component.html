@@ -3,7 +3,7 @@
 </h2>
 
 <div class="right">
-    {{ productsNb }} products |
+    {{ productsNb$ | async }} products |
 
     {favourites, plural,
     =0 {no favourite}
@@ -44,7 +44,7 @@
     </button>
     Page {{ currentPage }}
     <button (click)="nextPage()"
-            [disabled]="productsNb <= end">
+            [disabled]="(productsNb$ | async) <= end">
         Next Page >
     </button>
 </div>

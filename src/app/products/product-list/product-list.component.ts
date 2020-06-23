@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
 
   title: string = 'Products';
   selectedProduct: Product;
-  productsNb = 0;
+//  productsNb = 0;
   errorMessage;
 
   // Pagination
@@ -68,6 +68,13 @@ export class ProductListComponent implements OnInit {
     .productService
     .products$
     .pipe(
-      tap(products => this.productsNb = products.length)
+      
     );
+
+  productsNb$ = this
+    .products$
+    .pipe(
+      map(products => products.length),
+      startWith(0)
+    )
 }
