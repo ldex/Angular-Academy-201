@@ -9,7 +9,7 @@ import { Product } from './product.interface';
 })
 export class ProductService {
 
-  private baseUrl = 'https://storerestservice.azurewebsites.net/api/products/';
+  private baseUrl = 'https://storerestservice123.azurewebsites.net/api/products/';
   products$: Observable<Product[]>;
 
   constructor(private http: HttpClient) { 
@@ -24,7 +24,7 @@ export class ProductService {
                       .get<Product[]>(url)
                       .pipe(
                         delay(1500),
-                        tap(console.table),
+                        //tap(console.table),
                         shareReplay()
                       );
   }

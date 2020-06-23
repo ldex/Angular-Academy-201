@@ -8,15 +8,24 @@ import { Product } from './product.interface';
 })
 export class FavouriteService {
 
+
+  private addedFavourite = new BehaviorSubject<Product>(null);
+  addedFavourite$: Observable<Product> = this.addedFavourite.asObservable();
+
   constructor() { }
 
   private favourites: Set<Product> = new Set();
 
   addToFavourites(product: Product) {
     this.favourites.add(product);
+    this.addedFavourite.next(product);
   }
 
   getFavouritesNb(): number {
     return this.favourites.size;
+  }
+
+  resetAddedFavourite() {
+    this.addedFavourite.next(null);
   }
 }
